@@ -1,0 +1,4 @@
+rootProject.name = 'Binary API Wrapper'
+include 'binary-api-wrapper'
+findProject(':binary-api-wrapper')?.name = 'api'
+
