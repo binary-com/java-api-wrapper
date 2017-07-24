@@ -1,17 +1,14 @@
 package com.binary.examples.simplebinaryapiusage;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.binary.api.ApiWrapper;
 import com.binary.api.models.requests.TickRequest;
-import com.binary.api.models.responses.Tick;
 import com.binary.api.models.responses.TickResponse;
 
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 
 public class MainActivity extends AppCompatActivity {
 
