@@ -66,3 +66,6 @@ freeline_project_description.json
 *.ctxt
 
 .DS_Store
+
+# Add Gradle wrapper file
+!gradle/wrapper/gradle-wrapper.jar
