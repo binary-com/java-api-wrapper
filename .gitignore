@@ -69,3 +69,6 @@ freeline_project_description.json
 
 # Add Gradle wrapper file
 !gradle/wrapper/gradle-wrapper.jar
+.idea/markdown-navigator.xml
+.idea/markdown-navigator/
+.idea/vcs.xml
