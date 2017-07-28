@@ -1,5 +1,6 @@
 package com.binary.api.utils;
 
+import com.binary.api.models.responses.AuthorizeResponse;
 import com.binary.api.models.responses.TickResponse;
 
 import java.lang.reflect.Type;
@@ -13,6 +14,8 @@ public class ClassUtils {
         switch (type){
             case "tick":
                 return TickResponse.class;
+            case "authorize":
+                return AuthorizeResponse.class;
         }
         return null;
     }

@@ -10,26 +10,32 @@ import com.google.gson.annotations.SerializedName;
 public class Tick {
     @SerializedName("ask")
     @Expose
+    private
     String ask;
 
     @SerializedName("bid")
     @Expose
+    private
     String bid;
-
-    @SerializedName("epoch")
-    @Expose
-    String epoch;
 
     @SerializedName("id")
     @Expose
+    private
     String id;
+
+    @SerializedName("epoch")
+    @Expose
+    private
+    String epoch;
 
     @SerializedName("quote")
     @Expose
+    private
     String quote;
 
     @SerializedName("symbol")
     @Expose
+    private
     String symbol;
 
     public String getAsk(){

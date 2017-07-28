@@ -6,20 +6,30 @@ import com.binary.api.models.responses.ResponseBase;
 import com.binary.api.models.WebsocketEvent;
 import com.google.gson.Gson;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+
 import io.reactivex.Observable;
 import io.reactivex.subjects.BehaviorSubject;
 import io.reactivex.subjects.PublishSubject;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.WebSocket;
 
 /**
  * Created by morteza on 7/19/2017.
  */
 
 public class ApiWrapper {
+
+    Logger logger = LoggerFactory.getLogger(ApiWrapper.class);
+
     private static ApiWrapper instance;
 
     private OkHttpClient client;
+    private WebSocket webSocket;
     private WebsocketListener websocketListener;
     private String websocketUrl;
     public BehaviorSubject<WebsocketEvent> websocketEmitter = BehaviorSubject.create();
@@ -28,7 +38,28 @@ public class ApiWrapper {
 
     private ApiWrapper(String applicationId, String language, String url){
         this.websocketUrl = url + String.format("?app_id=%s&l=%s", applicationId, language);
-        this.client = new OkHttpClient();
+
+        try {
+            this.connect();
+        } catch (IOException e) {
+            logger.debug(e.getMessage());
+        }
+
+        this.websocketEmitter.subscribe(e -> {
+            if(!e.isOpened()) {
+                this.connect();
+            }
+        });
+    }
+
+    private void connect() throws IOException {
+        if (this.client != null) {
+            client.connectionPool().evictAll();
+            client.dispatcher().executorService().shutdown();
+        }
+        this.client = new OkHttpClient.Builder()
+                .retryOnConnectionFailure(true)
+                .build();
         final Request request = new Request.Builder()
                 .url(websocketUrl)
                 .build();
@@ -36,9 +67,7 @@ public class ApiWrapper {
         this.websocketListener = new WebsocketListener(this.websocketEmitter,
                 this.responseEmitter, this.requestEmitter);
 
-        this.client.newWebSocket(request, websocketListener);
-
-        client.dispatcher().executorService().shutdown();
+        this.webSocket = this.client.newWebSocket(request, websocketListener);
     }
 
     public static ApiWrapper build(String applicationId){

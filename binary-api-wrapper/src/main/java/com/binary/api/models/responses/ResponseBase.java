@@ -16,11 +16,19 @@ public abstract class ResponseBase<T> {
     @Expose
     String type;
 
+    @SerializedName("error")
+    @Expose
+    Error error;
+
     public String getType(){
         return this.type;
     }
 
     public T getRequest(){
         return this.request;
+    }
+
+    public Error getError() {
+        return error;
     }
 }

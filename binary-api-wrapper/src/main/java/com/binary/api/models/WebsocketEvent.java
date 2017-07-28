@@ -9,6 +9,12 @@ public class WebsocketEvent {
     private boolean hasError = false;
     private String errorMessage;
 
+    public WebsocketEvent(boolean isOpened, String message){
+        this.isOpened = isOpened;
+        this.errorMessage = message;
+        this.hasError = !isOpened;
+    }
+
     public boolean isOpened() {
         return isOpened;
     }

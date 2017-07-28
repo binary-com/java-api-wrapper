@@ -8,3 +8,5 @@ cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+after-success:
+    - ./gradlew jacocoTestReport coveralls
