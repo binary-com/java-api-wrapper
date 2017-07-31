@@ -1,11 +1,14 @@
 package com.binary.api;
 
 import com.binary.api.models.requests.RequestBase;
+import com.binary.api.models.responses.AssetIndex;
+import com.binary.api.utils.AssetIndexDeserializer;
 import com.binary.api.utils.ClassUtils;
 import com.binary.api.models.responses.ResponseBase;
 import com.binary.api.models.WebsocketEvent;
 import com.google.gson.Gson;
 
+import com.google.gson.GsonBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -94,7 +97,9 @@ public class ApiWrapper {
      * @return An observale
      */
     public Observable<ResponseBase> sendRequest(RequestBase request){
-        Gson gson = new Gson();
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(AssetIndex.class, new AssetIndexDeserializer());
+        Gson gson = gsonBuilder.create();
         this.websocketEmitter
                 .filter(o -> {
                     return o.isOpened();
@@ -117,7 +122,8 @@ public class ApiWrapper {
                     return request.getResponseType() == ClassUtils.getClassType(response.getType());
                 })
                 .map(o -> {
-                    return gson.fromJson(o, request.getResponseType());
+                    ResponseBase response = gson.fromJson(o, request.getResponseType());
+                    return response;
                 });
     }
 

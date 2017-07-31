@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by morteza on 7/25/2017.
  */
-public class TickRequestUnitTest {
+public class TickRequestTest {
     private ApiWrapper api;
     @Before
     public void setup() throws Exception{

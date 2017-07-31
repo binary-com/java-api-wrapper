@@ -18,7 +18,7 @@ import static org.junit.Assert.assertNotEquals;
 /**
  * Created by morteza on 7/28/2017.
  */
-public class AuthorizeUnitTest {
+public class AuthorizeTest {
     private ApiWrapper api;
     @Before
     public void setup() throws Exception{
@@ -27,7 +27,7 @@ public class AuthorizeUnitTest {
 
     @Test
     public void validAuthorizeTest() throws Exception{
-        AuthorizeRequest request = new AuthorizeRequest("a1-JtfpCqlQDfU42NU4tSz9j6SrzkzOP", false);
+        AuthorizeRequest request = new AuthorizeRequest("EA1wsuDXKzif4r8", false);
         TestObserver<ResponseBase> testObserver = new TestObserver<>();
 
         this.api.sendRequest(request)
