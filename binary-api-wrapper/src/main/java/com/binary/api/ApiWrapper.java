@@ -1,25 +1,38 @@
 package com.binary.api;
 
 import com.binary.api.models.requests.RequestBase;
+import com.binary.api.models.responses.AssetIndex;
+import com.binary.api.utils.AssetIndexDeserializer;
 import com.binary.api.utils.ClassUtils;
 import com.binary.api.models.responses.ResponseBase;
 import com.binary.api.models.WebsocketEvent;
 import com.google.gson.Gson;
+
+import com.google.gson.GsonBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
 
 import io.reactivex.Observable;
 import io.reactivex.subjects.BehaviorSubject;
 import io.reactivex.subjects.PublishSubject;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.WebSocket;
 
 /**
  * Created by morteza on 7/19/2017.
  */
 
 public class ApiWrapper {
+
+    Logger logger = LoggerFactory.getLogger(ApiWrapper.class);
+
     private static ApiWrapper instance;
 
     private OkHttpClient client;
+    private WebSocket webSocket;
     private WebsocketListener websocketListener;
     private String websocketUrl;
     public BehaviorSubject<WebsocketEvent> websocketEmitter = BehaviorSubject.create();
@@ -28,7 +41,28 @@ public class ApiWrapper {
 
     private ApiWrapper(String applicationId, String language, String url){
         this.websocketUrl = url + String.format("?app_id=%s&l=%s", applicationId, language);
-        this.client = new OkHttpClient();
+
+        try {
+            this.connect();
+        } catch (IOException e) {
+            logger.debug(e.getMessage());
+        }
+
+        this.websocketEmitter.subscribe(e -> {
+            if(!e.isOpened()) {
+                this.connect();
+            }
+        });
+    }
+
+    private void connect() throws IOException {
+        if (this.client != null) {
+            client.connectionPool().evictAll();
+            client.dispatcher().executorService().shutdown();
+        }
+        this.client = new OkHttpClient.Builder()
+                .retryOnConnectionFailure(true)
+                .build();
         final Request request = new Request.Builder()
                 .url(websocketUrl)
                 .build();
@@ -36,9 +70,7 @@ public class ApiWrapper {
         this.websocketListener = new WebsocketListener(this.websocketEmitter,
                 this.responseEmitter, this.requestEmitter);
 
-        this.client.newWebSocket(request, websocketListener);
-
-        client.dispatcher().executorService().shutdown();
+        this.webSocket = this.client.newWebSocket(request, websocketListener);
     }
 
     public static ApiWrapper build(String applicationId){
@@ -65,7 +97,9 @@ public class ApiWrapper {
      * @return An observale
      */
     public Observable<ResponseBase> sendRequest(RequestBase request){
-        Gson gson = new Gson();
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(AssetIndex.class, new AssetIndexDeserializer());
+        Gson gson = gsonBuilder.create();
         this.websocketEmitter
                 .filter(o -> {
                     return o.isOpened();
@@ -88,7 +122,8 @@ public class ApiWrapper {
                     return request.getResponseType() == ClassUtils.getClassType(response.getType());
                 })
                 .map(o -> {
-                    return gson.fromJson(o, request.getResponseType());
+                    ResponseBase response = gson.fromJson(o, request.getResponseType());
+                    return response;
                 });
     }
 

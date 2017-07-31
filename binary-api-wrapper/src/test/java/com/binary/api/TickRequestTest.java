@@ -2,27 +2,22 @@ package com.binary.api;
 
 import com.binary.api.models.requests.TickRequest;
 import com.binary.api.models.responses.ResponseBase;
-import com.binary.api.models.responses.TickResponse;
-import io.reactivex.Observer;
-import io.reactivex.Scheduler;
-import io.reactivex.functions.Consumer;
 import io.reactivex.observers.TestObserver;
 import io.reactivex.schedulers.TestScheduler;
-import io.reactivex.subscribers.TestSubscriber;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by morteza on 7/25/2017.
  */
-public class SendRequestUnitTest {
+public class TickRequestTest {
     private ApiWrapper api;
     @Before
-    public void initialBuilder() throws Exception{
+    public void setup() throws Exception{
         this.api = ApiWrapper.build("10");
     }
 

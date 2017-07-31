@@ -24,7 +24,7 @@ public class TickRequest extends RequestBase{
     }
 
     @SerializedName("ticks")
-    String symbol;
+    private String symbol;
 
     public String getSymbol() {
         return symbol;

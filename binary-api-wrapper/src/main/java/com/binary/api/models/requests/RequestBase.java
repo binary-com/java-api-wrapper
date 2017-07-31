@@ -3,11 +3,9 @@ package com.binary.api.models.requests;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
+import io.reactivex.annotations.Nullable;
 
 import java.lang.reflect.Type;
-
-import io.reactivex.annotations.Nullable;
 
 /**
  * Created by morteza on 7/19/2017.

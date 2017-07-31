@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ApiWrapper api = ApiWrapper.build("10");
+        ApiWrapper api = ApiWrapper.build("10"  );
 
         TickRequest tickRequest = new TickRequest();
         tickRequest.setSymbol("R_10");

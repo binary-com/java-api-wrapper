@@ -11,6 +11,7 @@ import com.google.gson.annotations.SerializedName;
 public class TickResponse extends ResponseBase<TickRequest> {
     @SerializedName("tick")
     @Expose
+    private
     Tick tick;
 
     public Tick getTick() {
