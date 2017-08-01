@@ -21,6 +21,8 @@ public class ClassUtils {
                 return AssetIndexResponse.class;
             case "contracts_for":
                 return ContractsForSymbolResponse.class;
+            case "forget":
+                return ForgetResponse.class;
         }
         return null;
     }
