@@ -1,9 +1,6 @@
 package com.binary.api.utils;
 
-import com.binary.api.models.responses.ActiveSymbolResponse;
-import com.binary.api.models.responses.AssetIndexResponse;
-import com.binary.api.models.responses.AuthorizeResponse;
-import com.binary.api.models.responses.TickResponse;
+import com.binary.api.models.responses.*;
 
 import java.lang.reflect.Type;
 
@@ -22,6 +19,8 @@ public class ClassUtils {
                 return ActiveSymbolResponse.class;
             case "asset_index":
                 return AssetIndexResponse.class;
+            case "contracts_for":
+                return ContractsForSymbolResponse.class;
         }
         return null;
     }
