@@ -1,5 +1,7 @@
 package com.binary.api.utils;
 
+import com.binary.api.models.requests.ForgetAllRequest;
+import com.binary.api.models.requests.ForgetAllResponse;
 import com.binary.api.models.responses.*;
 
 import java.lang.reflect.Type;
@@ -23,6 +25,8 @@ public class ClassUtils {
                 return ContractsForSymbolResponse.class;
             case "forget":
                 return ForgetResponse.class;
+            case "forget_all":
+                return ForgetAllResponse.class;
         }
         return null;
     }
