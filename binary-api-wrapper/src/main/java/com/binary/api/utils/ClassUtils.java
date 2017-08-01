@@ -27,6 +27,8 @@ public class ClassUtils {
                 return ForgetResponse.class;
             case "forget_all":
                 return ForgetAllResponse.class;
+            case "landing_company":
+                return LandingCompanyResponse.class;
         }
         return null;
     }
