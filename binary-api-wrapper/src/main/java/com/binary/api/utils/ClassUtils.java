@@ -43,6 +43,8 @@ public class ClassUtils {
                 return PriceProposalResponse.class;
             case "residence_list":
                 return ResidenceListResponce.class;
+            case "states_list":
+                return StatesListResponse.class;
         }
         return null;
     }
