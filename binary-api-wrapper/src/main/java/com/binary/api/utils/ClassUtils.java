@@ -41,6 +41,8 @@ public class ClassUtils {
                 return PayoutCurrenciesResponse.class;
             case "proposal":
                 return PriceProposalResponse.class;
+            case "residence_list":
+                return ResidenceListResponce.class;
         }
         return null;
     }
