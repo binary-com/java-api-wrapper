@@ -1,7 +1,6 @@
 package com.binary.api.models.responses;
 
 import com.google.gson.annotations.SerializedName;
-import com.sun.org.apache.bcel.internal.generic.StackInstruction;
 
 import java.math.BigDecimal;
 

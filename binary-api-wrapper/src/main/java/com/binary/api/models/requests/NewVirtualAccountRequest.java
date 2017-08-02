@@ -3,7 +3,6 @@ package com.binary.api.models.requests;
 import com.binary.api.models.responses.NewVirtualAccountResponse;
 import com.binary.api.utils.Validator;
 import com.google.gson.annotations.SerializedName;
-import com.sun.istack.internal.NotNull;
 import io.reactivex.annotations.Nullable;
 
 /**
@@ -25,21 +24,18 @@ public class NewVirtualAccountRequest extends RequestBase {
      * Email verification code (received from a verify_email call, which must be done first)
      */
     @SerializedName("verification_code")
-    @NotNull
     private String verficationCode;
 
     /**
      * Password (length within 6-25 chars, accepts any printable ASCII character)
      */
     @SerializedName("client_password")
-    @NotNull
     private String clientPassword;
 
     /**
      * 2-letter country code (value received from residence_list call)
      */
     @SerializedName("residence")
-    @NotNull
     private String residence;
 
     /**

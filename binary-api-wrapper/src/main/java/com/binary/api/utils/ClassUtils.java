@@ -39,6 +39,8 @@ public class ClassUtils {
                 return PaymentAgentListResponse.class;
             case "payout_currencies":
                 return PayoutCurrenciesResponse.class;
+            case "proposal":
+                return PriceProposalResponse.class;
         }
         return null;
     }
