@@ -15,10 +15,6 @@ public class RequestBase {
     @SerializedName("passthrough")
     JsonObject passThrough;
 
-    @SerializedName("subscribe")
-    @Nullable
-    Integer subscribe = null;
-
     @SerializedName("req_id")
     @Nullable
     Integer id = null;
@@ -34,14 +30,6 @@ public class RequestBase {
         this.passThrough = passThrough;
     }
 
-    public int getSubscribe() {
-        return subscribe;
-    }
-
-    public void setSubscribe(int subscribe) {
-        this.subscribe = subscribe;
-    }
-
     @Nullable
     public Integer getId() {
         return id;
@@ -49,10 +37,6 @@ public class RequestBase {
 
     public void setId(@Nullable Integer id) {
         this.id = id;
-    }
-
-    public void setSubscribe(@Nullable Integer subscribe) {
-        this.subscribe = subscribe;
     }
 
     public Type getResponseType() {
