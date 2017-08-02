@@ -37,6 +37,8 @@ public class ClassUtils {
                 return PingResponse.class;
             case "paymentagent_list":
                 return PaymentAgentListResponse.class;
+            case "payout_currencies":
+                return PayoutCurrenciesResponse.class;
         }
         return null;
     }

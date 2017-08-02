@@ -1,7 +1,7 @@
 package com.binary.api;
 
-import com.binary.api.models.requests.PaymentAgentListRequest;
-import com.binary.api.models.responses.PaymentAgentListResponse;
+import com.binary.api.models.requests.PayoutCurrenciesRequest;
+import com.binary.api.models.responses.PayoutCurrenciesResponse;
 import com.binary.api.models.responses.ResponseBase;
 import io.reactivex.observers.TestObserver;
 import org.junit.Before;
@@ -17,7 +17,7 @@ import static org.junit.Assert.assertNotEquals;
  * @version 1.0.0
  * @since 8/2/2017
  */
-public class PaymentAgentListTest {
+public class PayoutCurrenciesTest {
     private ApiWrapper api;
     @Before
     public void setup() throws Exception{
@@ -25,8 +25,8 @@ public class PaymentAgentListTest {
     }
 
     @Test
-    public void getPaymentAgentList() throws Exception {
-        PaymentAgentListRequest request = new PaymentAgentListRequest("ng");
+    public void getPayoutCurrenciesTest() throws Exception {
+        PayoutCurrenciesRequest request = new PayoutCurrenciesRequest();
         TestObserver<ResponseBase> testObserver = new TestObserver<>();
 
         this.api.sendRequest(request)
@@ -34,10 +34,10 @@ public class PaymentAgentListTest {
 
         testObserver.await(10, TimeUnit.SECONDS);
 
-        PaymentAgentListResponse response = (PaymentAgentListResponse) testObserver.values().get(0);
+        PayoutCurrenciesResponse response = (PayoutCurrenciesResponse) testObserver.values().get(0);
 
-        assertEquals(response.getType(), "paymentagent_list");
+        assertEquals(response.getType(), "payout_currencies");
         assertEquals(response.getError(), null);
-        assertNotEquals(response.getPaymentAgentList(), null);
+        assertNotEquals(response.getPayoutCurrencies(), null);
     }
 }
