@@ -33,6 +33,8 @@ public class ClassUtils {
                 return NewVirtualAccountResponse.class;
             case "landing_company_details":
                 return LandingCompanyDetailsResponse.class;
+            case "ping":
+                return PingResponse.class;
         }
         return null;
     }
