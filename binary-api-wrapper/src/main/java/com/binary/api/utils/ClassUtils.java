@@ -35,6 +35,8 @@ public class ClassUtils {
                 return LandingCompanyDetailsResponse.class;
             case "ping":
                 return PingResponse.class;
+            case "paymentagent_list":
+                return PaymentAgentListResponse.class;
         }
         return null;
     }
