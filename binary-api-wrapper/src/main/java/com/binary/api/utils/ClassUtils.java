@@ -29,6 +29,10 @@ public class ClassUtils {
                 return ForgetAllResponse.class;
             case "landing_company":
                 return LandingCompanyResponse.class;
+            case "new_account_virtual":
+                return NewVirtualAccountResponse.class;
+            case "landing_company_details":
+                return LandingCompanyDetailsResponse.class;
         }
         return null;
     }
