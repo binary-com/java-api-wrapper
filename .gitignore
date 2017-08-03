@@ -74,3 +74,4 @@ freeline_project_description.json
 .idea/vcs.xml
 .idea/uiDesigner.xml
 .idea/fileTemplates
+binary-api-wrapper/src/test/resources/TestEnvironment.properties
