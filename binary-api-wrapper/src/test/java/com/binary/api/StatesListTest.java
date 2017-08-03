@@ -38,6 +38,6 @@ public class StatesListTest {
 
         assertEquals(response.getType(), "states_list");
         assertEquals(response.getError(), null);
-        assertTrue(response.getStateList().size() > 0);
+        assertTrue(response.getStatesList().size() > 0);
     }
 }

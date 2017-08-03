@@ -20,10 +20,10 @@ public class StatesListResponse extends ResponseBase<StatesListRequest> {
     /**
      * List of states.
      */
-    @SerializedName("statesd_list")
-    private List<State> stateList;
+    @SerializedName("states_list")
+    private List<State> statesList;
 
-    public List<State> getStateList() {
-        return stateList;
+    public List<State> getStatesList() {
+        return statesList;
     }
 }
