@@ -54,6 +54,8 @@ public class ClassUtils {
                 return TradingTimesResponse.class;
             case "verify_email":
                 return EmailVerificationResponse.class;
+            case "website_status":
+                return WebsiteStatusResponse.class;
         }
         return null;
     }
