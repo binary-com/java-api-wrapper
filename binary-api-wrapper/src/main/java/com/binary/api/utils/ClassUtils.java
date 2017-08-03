@@ -50,6 +50,8 @@ public class ClassUtils {
                 return TickHistoryResponse.class;
             case "time":
                 return TimeResponse.class;
+            case "trading_times":
+                return TradingTimesResponse.class;
         }
         return null;
     }
