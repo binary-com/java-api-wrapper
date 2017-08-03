@@ -45,6 +45,10 @@ public class ClassUtils {
                 return ResidenceListResponce.class;
             case "states_list":
                 return StatesListResponse.class;
+            case "candles":
+                return TickHistoryResponse.class;
+            case "history":
+                return TickHistoryResponse.class;
         }
         return null;
     }
