@@ -10,6 +10,9 @@ import io.reactivex.subscribers.TestSubscriber;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
@@ -20,14 +23,25 @@ import static org.junit.Assert.assertNotEquals;
  */
 public class AuthorizeTest {
     private ApiWrapper api;
+    private Properties properties;
     @Before
     public void setup() throws Exception{
-        this.api = ApiWrapper.build("10");
+        this.properties = new Properties();
+        InputStream inputStream = ClassLoader.getSystemResourceAsStream("TestEnvironment.properties");
+        try{
+            properties.load(inputStream);
+            this.api = ApiWrapper.build("10");
+        }
+        catch (IOException ex){
+            throw ex;
+        }
+
+
     }
 
     @Test
     public void validAuthorizeTest() throws Exception{
-        AuthorizeRequest request = new AuthorizeRequest("EA1wsuDXKzif4r8", false);
+        AuthorizeRequest request = new AuthorizeRequest(properties.getProperty("CR_READ"), false);
         TestObserver<ResponseBase> testObserver = new TestObserver<>();
 
         this.api.sendRequest(request)
