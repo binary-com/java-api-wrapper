@@ -1,6 +1,5 @@
 package com.binary.api.utils;
 
-import com.binary.api.models.requests.ForgetAllRequest;
 import com.binary.api.models.requests.ForgetAllResponse;
 import com.binary.api.models.responses.*;
 
@@ -49,6 +48,8 @@ public class ClassUtils {
                 return TickHistoryResponse.class;
             case "history":
                 return TickHistoryResponse.class;
+            case "time":
+                return TimeResponse.class;
         }
         return null;
     }
