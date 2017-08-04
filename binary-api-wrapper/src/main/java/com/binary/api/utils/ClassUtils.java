@@ -58,6 +58,8 @@ public class ClassUtils {
                 return WebsiteStatusResponse.class;
             case "get_limits":
                 return AccountLimitsResponse.class;
+            case "get_settings":
+                return AccountSettingsResponse.class;
         }
         return null;
     }
