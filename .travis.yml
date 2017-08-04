@@ -8,5 +8,7 @@ cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+before_script:
+    - git clone ssh://git@github.com:regentmarkets/java-api-wrapper-config.git ~/binary-api-wrapper/src/test/resources
 after_success:
     - ./gradlew jacocoTestReport coveralls
