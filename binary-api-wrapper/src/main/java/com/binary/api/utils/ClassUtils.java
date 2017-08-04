@@ -60,6 +60,8 @@ public class ClassUtils {
                 return AccountLimitsResponse.class;
             case "get_settings":
                 return AccountSettingsResponse.class;
+            case "get_account_status":
+                return AccountStatusResponse.class;
         }
         return null;
     }
