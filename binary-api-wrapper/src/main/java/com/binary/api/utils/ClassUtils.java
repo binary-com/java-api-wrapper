@@ -64,6 +64,8 @@ public class ClassUtils {
                 return AccountStatusResponse.class;
             case "balance":
                 return BalanceResponse.class;
+            case "get_self_exclusion":
+                return GetSelfExclusionResponse.class;
         }
         return null;
     }
