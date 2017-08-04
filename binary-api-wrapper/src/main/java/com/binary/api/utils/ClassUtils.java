@@ -56,6 +56,8 @@ public class ClassUtils {
                 return EmailVerificationResponse.class;
             case "website_status":
                 return WebsiteStatusResponse.class;
+            case "get_limits":
+                return AccountLimitsResponse.class;
         }
         return null;
     }
