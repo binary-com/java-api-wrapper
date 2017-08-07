@@ -72,6 +72,8 @@ public class ClassUtils {
                 return LogoutResponse.class;
             case "oauth_apps":
                 return OAuthApplicationResponse.class;
+            case "statement":
+                return StatementResponse.class;
         }
         return null;
     }
