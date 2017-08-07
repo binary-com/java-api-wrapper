@@ -76,3 +76,4 @@ freeline_project_description.json
 .idea/fileTemplates
 binary-api-wrapper/src/test/resources/TestEnvironment.properties
 binary-api-wrapper/src/test/resources/
+*.sw*
