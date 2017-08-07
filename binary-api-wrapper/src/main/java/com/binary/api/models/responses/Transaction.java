@@ -23,21 +23,21 @@ public class Transaction {
      * Example: 10867502908
      */
     @SerializedName("transaction_id")
-    private int transactionId;
+    private Long transactionId;
 
     /**
      * Internal transaction identifier for the corresponding buy transaction ( set only for contract selling )
      */
     @SerializedName("reference_id")
     @Nullable
-    private Integer referenceId;
+    private Long referenceId;
 
     /**
      * It is the contract id Example: 4867502908
      */
     @SerializedName("contract_id")
     @Nullable
-    private Integer contractId;
+    private Long contractId;
 
     /**
      * It is the time of transaction Example: 1441175849
@@ -94,15 +94,15 @@ public class Transaction {
         return balanceAfter;
     }
 
-    public int getTransactionId() {
+    public Long getTransactionId() {
         return transactionId;
     }
 
-    public Integer getReferenceId() {
+    public Long getReferenceId() {
         return referenceId;
     }
 
-    public Integer getContractId() {
+    public Long getContractId() {
         return contractId;
     }
 

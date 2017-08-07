@@ -74,6 +74,8 @@ public class ClassUtils {
                 return OAuthApplicationResponse.class;
             case "statement":
                 return StatementResponse.class;
+            case "portfolio":
+                return PortfolioResponse.class;
         }
         return null;
     }
