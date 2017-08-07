@@ -70,6 +70,8 @@ public class ClassUtils {
                 return LoginHistoryResponse.class;
             case "logout":
                 return LogoutResponse.class;
+            case "oauth_apps":
+                return OAuthApplicationResponse.class;
         }
         return null;
     }
