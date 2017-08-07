@@ -68,6 +68,8 @@ public class ClassUtils {
                 return GetSelfExclusionResponse.class;
             case "login_history":
                 return LoginHistoryResponse.class;
+            case "logout":
+                return LogoutResponse.class;
         }
         return null;
     }

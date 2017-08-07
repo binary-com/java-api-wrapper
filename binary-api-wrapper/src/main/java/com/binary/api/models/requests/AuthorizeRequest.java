@@ -16,6 +16,11 @@ public class AuthorizeRequest extends RequestBase {
     public AuthorizeRequest(){
         this.responseType = AuthorizeResponse.class;
     }
+
+    public AuthorizeRequest(String token){
+        this(token, false);
+    }
+
     public AuthorizeRequest(String token, boolean addToLoginHistoy){
         this();
         this.authorize = token;

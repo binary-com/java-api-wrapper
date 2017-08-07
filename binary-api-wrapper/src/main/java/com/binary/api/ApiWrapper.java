@@ -122,8 +122,8 @@ public class ApiWrapper {
                     return request.getResponseType() == ClassUtils.getClassType(response.getType());
                 })
                 .map(o -> {
-                    ResponseBase response = gson.fromJson(o, request.getResponseType());
-                    return response;
+//                    ResponseBase response = gson.fromJson(o, request.getResponseType());
+                    return gson.fromJson(o, request.getResponseType());
                 });
     }
 
