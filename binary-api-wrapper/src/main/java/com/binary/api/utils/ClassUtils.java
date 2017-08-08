@@ -56,6 +56,7 @@ public class ClassUtils {
                 return EmailVerificationResponse.class;
             case "website_status":
                 return WebsiteStatusResponse.class;
+            // Read Scope
             case "get_limits":
                 return AccountLimitsResponse.class;
             case "get_settings":
@@ -84,6 +85,9 @@ public class ClassUtils {
                 return RealityCheckResponse.class;
             case "transaction":
                 return TransactionsStreamResponse.class;
+            // Trade Scope
+            case "buy":
+                return BuyContractResponse.class;
         }
         return null;
     }
