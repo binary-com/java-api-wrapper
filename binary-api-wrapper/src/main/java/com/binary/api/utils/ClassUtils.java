@@ -76,6 +76,8 @@ public class ClassUtils {
                 return StatementResponse.class;
             case "portfolio":
                 return PortfolioResponse.class;
+            case "profit_table":
+                return ProfitTableResponse.class;
         }
         return null;
     }
