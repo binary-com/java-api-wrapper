@@ -21,13 +21,13 @@ public class Statement {
      * Array of returned transactions
      */
     @SerializedName("transactions")
-    private List<Transaction> transactions;
+    private List<StatementTransaction> transactions;
 
     public int getCount() {
         return count;
     }
 
-    public List<Transaction> getTransactions() {
+    public List<StatementTransaction> getTransactions() {
         return transactions;
     }
 }

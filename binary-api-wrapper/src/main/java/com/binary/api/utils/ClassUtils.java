@@ -82,6 +82,8 @@ public class ClassUtils {
                 return ProposalOpenContractResponse.class;
             case "reality_check":
                 return RealityCheckResponse.class;
+            case "transaction":
+                return TransactionsStreamResponse.class;
         }
         return null;
     }
