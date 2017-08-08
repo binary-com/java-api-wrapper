@@ -78,6 +78,8 @@ public class ClassUtils {
                 return PortfolioResponse.class;
             case "profit_table":
                 return ProfitTableResponse.class;
+            case "proposal_open_contract":
+                return ProposalOpenContractResponse.class;
         }
         return null;
     }
