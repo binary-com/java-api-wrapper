@@ -83,6 +83,13 @@ public class BuyReceipt {
     @SerializedName("payout")
     private BigDecimal payout;
 
+    /**
+     * Account token that contract is bought for it.
+     * Note: it is just available when request is BuyContractForMultipleAccounts
+     */
+    @SerializedName("token")
+    private String token;
+
     public BigDecimal getBalanceAfter() {
         return balanceAfter;
     }
@@ -117,5 +124,9 @@ public class BuyReceipt {
 
     public BigDecimal getPayout() {
         return payout;
+    }
+
+    public String getToken() {
+        return token;
     }
 }

@@ -88,6 +88,8 @@ public class ClassUtils {
             // Trade Scope
             case "buy":
                 return BuyContractResponse.class;
+            case "buy_contract_for_multiple_accounts":
+                return BuyContractForMultipleAccountsResponse.class;
         }
         return null;
     }

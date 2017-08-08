@@ -1,29 +1,24 @@
 package com.binary.api.models.requests;
 
+import com.binary.api.models.responses.BuyContractForMultipleAccountsResponse;
 import com.binary.api.models.responses.BuyContractResponse;
 import com.binary.api.utils.Validator;
 import com.google.gson.annotations.SerializedName;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
- * <h1>BuyContractRequest</h1>
- *
- * <h2>Buy a Contract Send</h2>
- * <p>
- *     Buy a Contract
- * </p>
- *
  * @author Morteza Tavanarad
  * @version 1.0.0
  * @since 8/8/2017
  */
-public class BuyContractRequest extends RequestBase {
+public class BuyContractForMultipleAccountsRequest extends RequestBase {
 
     /**
-     * Either the id received from a Price Proposal (proposal) call, or 1 if contract proposalId parameters are passed in the parameters field
+     * Either the id received from a Price Proposal (proposal) call, or 1 if contract buy parameters are passed in the parameters field
      */
-    @SerializedName("buy")
+    @SerializedName("buy_contract_for_multiple_accounts")
     private String proposalId;
 
     /**
@@ -33,26 +28,36 @@ public class BuyContractRequest extends RequestBase {
     private BigDecimal price;
 
     /**
-     * Optional field, used to pass the parameters for contract proposalId
+     * API tokens identifying the accounts for which the contract is bought.
+     * Note, if the same token appears multiple times or if multiple tokens designate the same account, the contract is bought multiple times for this account.
+     */
+    @SerializedName("tokens")
+    private List<String> tokens;
+
+    /**
+     * Optional field, used to pass the parameters for contract buy
      */
     @SerializedName("parameters")
     private BuyContractParameters parameters;
 
-    private BuyContractRequest() {
-        this.responseType = BuyContractResponse.class;
+    private BuyContractForMultipleAccountsRequest() {
+        this.responseType = BuyContractForMultipleAccountsResponse.class;
     }
 
-    public BuyContractRequest(BigDecimal price , BuyContractParameters parameters) {
+    public BuyContractForMultipleAccountsRequest(BigDecimal price ,
+                                                 BuyContractParameters parameters, List<String> tokens) {
         this();
         this.proposalId = "1";
         this.setPrice(price);
+        this.setTokens(tokens);
         this.setParameters(parameters);
     }
 
-    public BuyContractRequest(String proposalId, BigDecimal price) {
+    public BuyContractForMultipleAccountsRequest(String proposalId, BigDecimal price, List<String> tokens) {
         this();
         this.setProposalId(proposalId);
         this.setPrice(price);
+        this.setTokens(tokens);
 
     }
 
@@ -72,6 +77,14 @@ public class BuyContractRequest extends RequestBase {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public List<String> getTokens() {
+        return tokens;
+    }
+
+    public void setTokens(List<String> tokens) {
+        this.tokens = tokens;
     }
 
     public BuyContractParameters getParameters() {
