@@ -80,6 +80,8 @@ public class ClassUtils {
                 return ProfitTableResponse.class;
             case "proposal_open_contract":
                 return ProposalOpenContractResponse.class;
+            case "reality_check":
+                return RealityCheckResponse.class;
         }
         return null;
     }
