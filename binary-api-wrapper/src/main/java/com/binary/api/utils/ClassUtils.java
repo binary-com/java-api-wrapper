@@ -1,6 +1,7 @@
 package com.binary.api.utils;
 
 import com.binary.api.models.requests.ForgetAllResponse;
+import com.binary.api.models.requests.SellContractForMultipleAccountsRequest;
 import com.binary.api.models.responses.*;
 
 import java.lang.reflect.Type;
@@ -90,6 +91,8 @@ public class ClassUtils {
                 return BuyContractResponse.class;
             case "buy_contract_for_multiple_accounts":
                 return BuyContractForMultipleAccountsResponse.class;
+            case "sell_contract_for_multiple_accounts":
+                return SellContractForMultipleAccountsRequest.class;
         }
         return null;
     }
