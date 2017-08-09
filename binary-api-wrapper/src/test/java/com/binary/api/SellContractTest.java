@@ -3,10 +3,8 @@ package com.binary.api;
 import com.binary.api.models.requests.AuthorizeRequest;
 import com.binary.api.models.requests.SellContractForMultipleAccountsRequest;
 import com.binary.api.models.requests.SellContractRequest;
-import com.binary.api.models.responses.AuthorizeResponse;
-import com.binary.api.models.responses.ResponseBase;
-import com.binary.api.models.responses.SellContractForMultipleAccountsResponse;
-import com.binary.api.models.responses.SellContractResponse;
+import com.binary.api.models.requests.SellExpiredContractsRequest;
+import com.binary.api.models.responses.*;
 import com.google.gson.Gson;
 import io.reactivex.observers.TestObserver;
 import org.junit.Test;
@@ -16,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Morteza Tavanarad
@@ -58,6 +57,30 @@ public class SellContractTest extends TestBase {
         assertEquals(response.getType(), "sell");
         assertNotEquals(response.getError(), null);
         assertEquals(response.getError().getCode(), "InvalidSellContractProposal");
+    }
+
+    @Test
+    public void sellExpiredContractTest() throws Exception {
+        AuthorizeRequest authRequest = new AuthorizeRequest(properties.getProperty("CR_TRADE"));
+        SellExpiredContractsRequest request = new SellExpiredContractsRequest();
+        TestObserver<ResponseBase> testObserver = new TestObserver<>();
+
+        this.api.sendRequest(authRequest)
+                .subscribe( o -> {
+                    AuthorizeResponse auth = (AuthorizeResponse) o;
+                    assertNotEquals(auth.getAuthorize(), null);
+
+                    this.api.sendRequest(request)
+                            .subscribe(testObserver);
+                });
+
+        testObserver.await(5, TimeUnit.SECONDS);
+
+        SellExpiredContractsResponse response = (SellExpiredContractsResponse) testObserver.values().get(0);
+
+        assertEquals(response.getType(), "sell_expired");
+        assertEquals(response.getError(), null);
+        assertTrue(response.getResult() >= new Integer(0));
     }
 
     private String getMassJsonRequest() {

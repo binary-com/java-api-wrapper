@@ -99,6 +99,8 @@ public class ClassUtils {
                 return StopCopyTradeResponse.class;
             case "sell":
                 return SellContractResponse.class;
+            case "sell_expired":
+                return SellExpiredContractsResponse.class;
         }
         return null;
     }
