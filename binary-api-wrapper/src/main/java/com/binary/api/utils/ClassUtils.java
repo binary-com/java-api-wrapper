@@ -101,6 +101,8 @@ public class ClassUtils {
                 return SellContractResponse.class;
             case "sell_expired":
                 return SellExpiredContractsResponse.class;
+            case "topup_virtual":
+                return TopUpVirtualMoneyAccountResponse.class;
         }
         return null;
     }
