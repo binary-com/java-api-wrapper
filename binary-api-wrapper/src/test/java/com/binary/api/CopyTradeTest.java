@@ -2,9 +2,11 @@ package com.binary.api;
 
 import com.binary.api.models.requests.AuthorizeRequest;
 import com.binary.api.models.requests.StartCopyTradeRequest;
+import com.binary.api.models.requests.StopCopyTradeRequest;
 import com.binary.api.models.responses.AuthorizeResponse;
 import com.binary.api.models.responses.ResponseBase;
 import com.binary.api.models.responses.StartCopyTradeResponse;
+import com.binary.api.models.responses.StopCopyTradeResponse;
 import io.reactivex.observers.TestObserver;
 import org.junit.Test;
 
@@ -42,5 +44,29 @@ public class CopyTradeTest extends TestBase {
         assertEquals(response.getType(), "copy_start");
         assertNotEquals(response.getError(), null);
         assertEquals(response.getError().getCode(), "CopyTradingNotAllowed");
+    }
+
+    @Test
+    public void stopCopyTradeTest() throws Exception {
+        AuthorizeRequest authRequest = new AuthorizeRequest(properties.getProperty("VRTC_TRADE"));
+        StopCopyTradeRequest request = new StopCopyTradeRequest(properties.getProperty("CR_TRADE"));
+        TestObserver<ResponseBase> testObserver = new TestObserver<>();
+
+        this.api.sendRequest(authRequest)
+                .subscribe( o -> {
+                    AuthorizeResponse auth = (AuthorizeResponse) o;
+                    assertNotEquals(auth.getAuthorize(), null);
+
+                    this.api.sendRequest(request)
+                            .subscribe(testObserver);
+                });
+
+        testObserver.await(5, TimeUnit.SECONDS);
+
+        StopCopyTradeResponse response = (StopCopyTradeResponse) testObserver.values().get(0);
+
+        assertEquals(response.getType(), "copy_stop");
+        assertEquals(response.getError(), null);
+        assertEquals(response.getResult(), new Integer(1));
     }
 }

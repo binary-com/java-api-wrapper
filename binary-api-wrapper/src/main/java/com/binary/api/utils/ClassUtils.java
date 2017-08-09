@@ -2,7 +2,6 @@ package com.binary.api.utils;
 
 import com.binary.api.models.requests.ForgetAllResponse;
 import com.binary.api.models.requests.SellContractForMultipleAccountsRequest;
-import com.binary.api.models.requests.StartCopyTradeRequest;
 import com.binary.api.models.responses.*;
 
 import java.lang.reflect.Type;
@@ -96,6 +95,8 @@ public class ClassUtils {
                 return SellContractForMultipleAccountsRequest.class;
             case "copy_start":
                 return StartCopyTradeResponse.class;
+            case "copy_stop":
+                return StopCopyTradeResponse.class;
         }
         return null;
     }
