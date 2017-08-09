@@ -15,6 +15,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class SellContractTest extends TestBase {
 
+    // FIXME Test it through websocket instead of static data
     @Test
     public void sellContractForMultipleAccounts() throws Exception {
         Gson gson = new Gson();
