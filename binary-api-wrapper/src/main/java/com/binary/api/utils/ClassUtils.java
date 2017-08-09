@@ -103,6 +103,8 @@ public class ClassUtils {
                 return SellExpiredContractsResponse.class;
             case "topup_virtual":
                 return TopUpVirtualMoneyAccountResponse.class;
+            case "api_token":
+                return ApiTokenManagementResponse.class;
         }
         return null;
     }
