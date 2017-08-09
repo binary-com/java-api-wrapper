@@ -32,10 +32,10 @@ public class SellContractForMultipleAccountsResponse extends ResponseBase<SellCo
     public class MassSellContractResult {
 
         @SerializedName("result")
-        private List<SellReceipt> sellReceipts;
+        private List<MassSellReceipt> massSellReceipts;
 
-        public List<SellReceipt> getSellReceipts() {
-            return sellReceipts;
+        public List<MassSellReceipt> getSellReceipts() {
+            return massSellReceipts;
         }
     }
 }

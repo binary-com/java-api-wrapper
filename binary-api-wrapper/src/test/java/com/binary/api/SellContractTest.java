@@ -2,11 +2,20 @@ package com.binary.api;
 
 import com.binary.api.models.requests.AuthorizeRequest;
 import com.binary.api.models.requests.SellContractForMultipleAccountsRequest;
+import com.binary.api.models.requests.SellContractRequest;
+import com.binary.api.models.responses.AuthorizeResponse;
+import com.binary.api.models.responses.ResponseBase;
 import com.binary.api.models.responses.SellContractForMultipleAccountsResponse;
+import com.binary.api.models.responses.SellContractResponse;
 import com.google.gson.Gson;
+import io.reactivex.observers.TestObserver;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * @author Morteza Tavanarad
@@ -25,6 +34,30 @@ public class SellContractTest extends TestBase {
                 SellContractForMultipleAccountsResponse.class);
 
         assertEquals(request.getPrice(), response.getRequest().getPrice());
+    }
+
+    @Test
+    public void failedSellContractTest() throws Exception {
+        AuthorizeRequest authRequest = new AuthorizeRequest(properties.getProperty("CR_TRADE"));
+        SellContractRequest request = new SellContractRequest(11542203588L, new BigDecimal("50"));
+        TestObserver<ResponseBase> testObserver = new TestObserver<>();
+
+        this.api.sendRequest(authRequest)
+                .subscribe( o -> {
+                    AuthorizeResponse auth = (AuthorizeResponse) o;
+                    assertNotEquals(auth.getAuthorize(), null);
+
+                    this.api.sendRequest(request)
+                            .subscribe(testObserver);
+                });
+
+        testObserver.await(5, TimeUnit.SECONDS);
+
+        SellContractResponse response = (SellContractResponse) testObserver.values().get(0);
+
+        assertEquals(response.getType(), "sell");
+        assertNotEquals(response.getError(), null);
+        assertEquals(response.getError().getCode(), "InvalidSellContractProposal");
     }
 
     private String getMassJsonRequest() {

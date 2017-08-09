@@ -97,6 +97,8 @@ public class ClassUtils {
                 return StartCopyTradeResponse.class;
             case "copy_stop":
                 return StopCopyTradeResponse.class;
+            case "sell":
+                return SellContractResponse.class;
         }
         return null;
     }

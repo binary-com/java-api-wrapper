@@ -11,26 +11,35 @@ import java.math.BigDecimal;
  */
 public class SellReceipt {
 
+    /**
+     * New account balance after completion of the sale
+     */
     @SerializedName("balance_after")
     private BigDecimal balanceAfter;
 
+    /**
+     * Internal contract identifier for the sold contract
+     */
     @SerializedName("contract_id")
     private Long contractId;
 
-    @SerializedName("reference_id")
-    private Long referenceId;
+    /**
+     * Actual effected sale price
+     */
+    @SerializedName("sold_for")
+    private BigDecimal soldFor;
 
-    @SerializedName("sell_price")
-    private BigDecimal sellPrice;
-
-    @SerializedName("sell_time")
-    private String sellTime;
-
+    /**
+     * Internal transaction identifier for the sale transaction
+     */
     @SerializedName("transaction_id")
     private Long transactionId;
 
-    @SerializedName("token")
-    private String token;
+    /**
+     * Internal transaction identifier for the corresponding buy transaction
+     */
+    @SerializedName("reference_id")
+    private Long referenceId;
 
     public BigDecimal getBalanceAfter() {
         return balanceAfter;
@@ -40,23 +49,15 @@ public class SellReceipt {
         return contractId;
     }
 
-    public Long getReferenceId() {
-        return referenceId;
-    }
-
-    public BigDecimal getSellPrice() {
-        return sellPrice;
-    }
-
-    public String getSellTime() {
-        return sellTime;
+    public BigDecimal getSoldFor() {
+        return soldFor;
     }
 
     public Long getTransactionId() {
         return transactionId;
     }
 
-    public String getToken() {
-        return token;
+    public Long getReferenceId() {
+        return referenceId;
     }
 }
