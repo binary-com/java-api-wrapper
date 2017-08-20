@@ -105,6 +105,8 @@ public class ClassUtils {
                 return TopUpVirtualMoneyAccountResponse.class;
             case "api_token":
                 return ApiTokenManagementResponse.class;
+            case "app_register":
+                return ApplicationRegistrationResponse.class;
         }
         return null;
     }
