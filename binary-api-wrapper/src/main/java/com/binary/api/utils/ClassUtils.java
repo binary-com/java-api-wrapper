@@ -107,6 +107,8 @@ public class ClassUtils {
                 return ApiTokenManagementResponse.class;
             case "app_register":
                 return ApplicationRegistrationResponse.class;
+            case "app_delete":
+                return ApplicationDeletionResponse.class;
         }
         return null;
     }

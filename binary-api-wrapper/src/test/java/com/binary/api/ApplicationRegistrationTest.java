@@ -1,11 +1,10 @@
 package com.binary.api;
 
 import com.binary.api.models.enums.Scopes;
+import com.binary.api.models.requests.ApplicationDeletionRequest;
 import com.binary.api.models.requests.ApplicationRegistrationRequest;
 import com.binary.api.models.requests.AuthorizeRequest;
-import com.binary.api.models.responses.ApplicationRegistrationResponse;
-import com.binary.api.models.responses.AuthorizeResponse;
-import com.binary.api.models.responses.ResponseBase;
+import com.binary.api.models.responses.*;
 import io.reactivex.observers.TestObserver;
 import org.junit.Test;
 
@@ -63,6 +62,19 @@ public class ApplicationRegistrationTest extends TestBase {
         assertEquals(response.getType(), "app_register");
         assertEquals(response.getError(), null);
         assertNotEquals(response.getRegisteredApplication(), null);
+
+        // Delete the application
+        ApplicationDeletionRequest deleteRequest =
+                new ApplicationDeletionRequest(response.getRegisteredApplication().getApplicationId());
+
+        TestObserver<ResponseBase> testObserver2 = new TestObserver<>();
+        this.api.sendRequest(deleteRequest)
+                .subscribe(testObserver2);
+
+        testObserver2.await(5, TimeUnit.SECONDS);
+        ApplicationDeletionResponse deleteResponse = (ApplicationDeletionResponse) testObserver2.values().get(0);
+        assertEquals(deleteResponse.getType(), "app_delete");
+        assertNotEquals(deleteResponse.getResponse(), null);
 
     }
 }
