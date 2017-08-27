@@ -111,6 +111,8 @@ public class ClassUtils {
                 return ApplicationDeletionResponse.class;
             case "app_list":
                 return ApplicationListResponse.class;
+            case "app_get":
+                return ApplicationDetailsResponse.class;
         }
         return null;
     }
