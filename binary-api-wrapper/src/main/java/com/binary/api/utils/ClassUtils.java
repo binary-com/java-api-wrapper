@@ -113,6 +113,8 @@ public class ClassUtils {
                 return ApplicationListResponse.class;
             case "app_get":
                 return ApplicationDetailsResponse.class;
+            case "app_update":
+                return ApplicationUpdateResponse.class;
         }
         return null;
     }
