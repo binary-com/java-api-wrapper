@@ -109,6 +109,8 @@ public class ClassUtils {
                 return ApplicationRegistrationResponse.class;
             case "app_delete":
                 return ApplicationDeletionResponse.class;
+            case "app_list":
+                return ApplicationListResponse.class;
         }
         return null;
     }
