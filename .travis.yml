@@ -8,5 +8,7 @@ cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+before_script:
+    - ./scripts/before-script.sh
 after_success:
     - ./gradlew jacocoTestReport coveralls

@@ -122,10 +122,18 @@ public class ApiWrapper {
                     return request.getResponseType() == ClassUtils.getClassType(response.getType());
                 })
                 .map(o -> {
-                    ResponseBase response = gson.fromJson(o, request.getResponseType());
-                    return response;
+//                    ResponseBase response = gson.fromJson(o, request.getResponseType());
+                    return gson.fromJson(o, request.getResponseType());
                 });
     }
 
+
+    public void closeConnection() {
+        this.requestEmitter.onComplete();
+        this.responseEmitter.onComplete();
+        this.websocketEmitter.onComplete();
+        this.webSocket.cancel();
+        instance = null;
+    }
 
 }

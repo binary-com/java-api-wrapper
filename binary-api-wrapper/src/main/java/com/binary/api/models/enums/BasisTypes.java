@@ -6,6 +6,17 @@ package com.binary.api.models.enums;
  * @since 8/2/2017
  */
 public enum BasisTypes {
-    PAYOUT,
-    STAKE;
+    PAYOUT("payout"),
+    STAKE("stake");
+
+    private final String value;
+
+    BasisTypes(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString(){
+        return this.value;
+    }
 }

@@ -6,9 +6,20 @@ package com.binary.api.models.enums;
  * @since 8/2/2017
  */
 public enum DurationUnits {
-    DAYS,
-    HOURS,
-    MINUTES,
-    SECONDS,
-    TICKS
+    DAYS("d"),
+    HOURS("h"),
+    MINUTES("m"),
+    SECONDS("s"),
+    TICKS("t");
+
+    private final String value;
+
+    DurationUnits(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
 }

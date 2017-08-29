@@ -29,12 +29,6 @@ jacocoTestReport {
     }
 }
 
-test {
-    jacoco {
-        excludes = ["com.binary.api.models.responses.*"]
-    }
-}
-
 //create a single Jar with all dependencies
 task fatJar(type: Jar) {
     manifest {

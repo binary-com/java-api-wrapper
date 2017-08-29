@@ -13,9 +13,14 @@ public class AuthorizeRequest extends RequestBase {
     @SerializedName("add_to_login_history")
     private int addToLoginHistory;
 
-    public AuthorizeRequest(){
+    private AuthorizeRequest(){
         this.responseType = AuthorizeResponse.class;
     }
+
+    public AuthorizeRequest(String token){
+        this(token, false);
+    }
+
     public AuthorizeRequest(String token, boolean addToLoginHistoy){
         this();
         this.authorize = token;
