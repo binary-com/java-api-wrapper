@@ -128,4 +128,12 @@ public class ApiWrapper {
     }
 
 
+    public void closeConnection() {
+        this.requestEmitter.onComplete();
+        this.responseEmitter.onComplete();
+        this.websocketEmitter.onComplete();
+        this.webSocket.cancel();
+        instance = null;
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.binary.api;
 
+import org.junit.After;
 import org.junit.Before;
 
 import java.util.Properties;
@@ -19,5 +20,10 @@ public class TestBase {
         TestUtility testUtility = new TestUtility();
         this.api = testUtility.getApi();
         this.properties = testUtility.getProperties();
+    }
+
+    @After
+    public void cleanUp() throws Exception {
+        this.api.closeConnection();
     }
 }
