@@ -115,6 +115,8 @@ public class ClassUtils {
                 return ApplicationDetailsResponse.class;
             case "app_update":
                 return ApplicationUpdateResponse.class;
+            case "get_financial_assessment":
+                return GetFinancialAssessmentResponse.class;
         }
         return null;
     }
