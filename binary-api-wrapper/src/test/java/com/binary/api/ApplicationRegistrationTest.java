@@ -71,7 +71,7 @@ public class ApplicationRegistrationTest extends TestBase {
         this.api.sendRequest(deleteRequest)
                 .subscribe(testObserver2);
 
-        testObserver2.await(5, TimeUnit.SECONDS);
+        testObserver2.await(10, TimeUnit.SECONDS);
         ApplicationDeletionResponse deleteResponse = (ApplicationDeletionResponse) testObserver2.values().get(0);
         assertEquals(deleteResponse.getType(), "app_delete");
         assertNotEquals(deleteResponse.getResponse(), null);
