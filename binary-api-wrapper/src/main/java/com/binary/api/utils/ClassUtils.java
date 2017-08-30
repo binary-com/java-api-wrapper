@@ -117,6 +117,8 @@ public class ClassUtils {
                 return ApplicationUpdateResponse.class;
             case "get_financial_assessment":
                 return GetFinancialAssessmentResponse.class;
+            case "jp_knowledge_test":
+                return JapanKnowledgeTestResponse.class;
         }
         return null;
     }
