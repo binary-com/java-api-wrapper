@@ -119,6 +119,8 @@ public class ClassUtils {
                 return GetFinancialAssessmentResponse.class;
             case "jp_knowledge_test":
                 return JapanKnowledgeTestResponse.class;
+            case "new_account_maltainvest":
+                return CreateMaltaAccountResponse.class;
         }
         return null;
     }
