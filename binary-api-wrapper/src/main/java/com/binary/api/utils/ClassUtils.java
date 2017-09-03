@@ -121,6 +121,8 @@ public class ClassUtils {
                 return JapanKnowledgeTestResponse.class;
             case "new_account_maltainvest":
                 return CreateMaltaAccountResponse.class;
+            case "new_account_real":
+                return CreateRealAccountResponse.class;
         }
         return null;
     }
