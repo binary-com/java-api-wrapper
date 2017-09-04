@@ -117,6 +117,20 @@ public class ClassUtils {
                 return ApplicationUpdateResponse.class;
             case "get_financial_assessment":
                 return GetFinancialAssessmentResponse.class;
+            case "jp_knowledge_test":
+                return JapanKnowledgeTestResponse.class;
+            case "new_account_maltainvest":
+                return CreateMaltaAccountResponse.class;
+            case "new_account_real":
+                return CreateRealAccountResponse.class;
+            case "new_sub_account":
+                return CreateRealSubAccountResponse.class;
+            case "revoke_oauth_app":
+                return RevokeOauthApplicationResponse.class;
+            case "tnc_approval":
+                return TNCApprovalResponse.class;
+            case "set_account_currency":
+                return SetAccountCurrencyResponse.class;
         }
         return null;
     }
