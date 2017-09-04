@@ -127,6 +127,8 @@ public class ClassUtils {
                 return CreateRealSubAccountResponse.class;
             case "revoke_oauth_app":
                 return RevokeOauthApplicationResponse.class;
+            case "tnc_approval":
+                return TNCApprovalResponse.class;
         }
         return null;
     }
