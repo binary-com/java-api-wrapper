@@ -129,6 +129,8 @@ public class ClassUtils {
                 return RevokeOauthApplicationResponse.class;
             case "tnc_approval":
                 return TNCApprovalResponse.class;
+            case "set_account_currency":
+                return SetAccountCurrencyResponse.class;
         }
         return null;
     }
