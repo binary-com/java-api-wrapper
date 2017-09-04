@@ -123,6 +123,8 @@ public class ClassUtils {
                 return CreateMaltaAccountResponse.class;
             case "new_account_real":
                 return CreateRealAccountResponse.class;
+            case "new_sub_account":
+                return CreateRealSubAccountResponse.class;
         }
         return null;
     }
