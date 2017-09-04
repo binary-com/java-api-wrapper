@@ -125,6 +125,8 @@ public class ClassUtils {
                 return CreateRealAccountResponse.class;
             case "new_sub_account":
                 return CreateRealSubAccountResponse.class;
+            case "revoke_oauth_app":
+                return RevokeOauthApplicationResponse.class;
         }
         return null;
     }
