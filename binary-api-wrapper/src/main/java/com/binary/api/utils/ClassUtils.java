@@ -131,6 +131,8 @@ public class ClassUtils {
                 return TNCApprovalResponse.class;
             case "set_account_currency":
                 return SetAccountCurrencyResponse.class;
+            case "set_financial_assessment":
+                return SetFinancialAssessmentResponse.class;
         }
         return null;
     }
