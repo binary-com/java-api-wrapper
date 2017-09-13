@@ -133,6 +133,8 @@ public class ClassUtils {
                 return SetAccountCurrencyResponse.class;
             case "set_financial_assessment":
                 return SetFinancialAssessmentResponse.class;
+            case "set_self_exclusion":
+                return SetSelfExclusionSettingsResponse.class;
         }
         return null;
     }
