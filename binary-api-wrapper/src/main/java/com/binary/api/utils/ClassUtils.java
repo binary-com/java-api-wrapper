@@ -137,6 +137,8 @@ public class ClassUtils {
                 return SetSelfExclusionSettingsResponse.class;
             case "set_settings":
                 return SetAccountSettingsResponse.class;
+            case "cashier":
+                return CashierURLResponse.class;
         }
         return null;
     }
