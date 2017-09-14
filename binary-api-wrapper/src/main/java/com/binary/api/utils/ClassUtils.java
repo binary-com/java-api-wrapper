@@ -139,6 +139,8 @@ public class ClassUtils {
                 return SetAccountSettingsResponse.class;
             case "cashier":
                 return CashierURLResponse.class;
+            case "cashier_password":
+                return CashierPasswordResponse.class;
         }
         return null;
     }
