@@ -135,6 +135,8 @@ public class ClassUtils {
                 return SetFinancialAssessmentResponse.class;
             case "set_self_exclusion":
                 return SetSelfExclusionSettingsResponse.class;
+            case "set_settings":
+                return SetAccountSettingsResponse.class;
         }
         return null;
     }
