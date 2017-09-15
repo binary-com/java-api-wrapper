@@ -141,6 +141,8 @@ public class ClassUtils {
                 return CashierURLResponse.class;
             case "cashier_password":
                 return CashierPasswordResponse.class;
+            case "paymentagent_withdraw":
+                return PaymentAgentWithdrawalResponse.class;
         }
         return null;
     }
