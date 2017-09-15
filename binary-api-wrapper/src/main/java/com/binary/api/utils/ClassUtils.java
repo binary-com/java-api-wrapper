@@ -143,6 +143,8 @@ public class ClassUtils {
                 return CashierPasswordResponse.class;
             case "paymentagent_withdraw":
                 return PaymentAgentWithdrawalResponse.class;
+            case "paymentagent_transfer":
+                return PaymentAgentTransferResponse.class;
         }
         return null;
     }
