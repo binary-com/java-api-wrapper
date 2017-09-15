@@ -2,6 +2,7 @@ package com.binary.api.utils;
 
 import com.binary.api.models.requests.ForgetAllResponse;
 import com.binary.api.models.requests.SellContractForMultipleAccountsRequest;
+import com.binary.api.models.requests.TransferBetweenAccountsRequest;
 import com.binary.api.models.responses.*;
 
 import java.lang.reflect.Type;
@@ -145,6 +146,8 @@ public class ClassUtils {
                 return PaymentAgentWithdrawalResponse.class;
             case "paymentagent_transfer":
                 return PaymentAgentTransferResponse.class;
+            case "transfer_between_accounts":
+                return TransferBetweenAccountsResponse.class;
         }
         return null;
     }
