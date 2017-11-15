@@ -1,3 +1,5 @@
+package com.binary.api;
+
 import com.binary.api.TestBase;
 import com.binary.api.models.enums.*;
 import com.binary.api.models.requests.AuthorizeRequest;
