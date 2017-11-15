@@ -47,6 +47,6 @@ public class PaymentAgentTransferTest extends TestBase {
 
         assertEquals(response.getType(), "paymentagent_transfer");
         assertEquals(response.getError().getCode(), "PaymentAgentTransferError");
-        assertEquals(response.getError().getMessage(), "You are not a Payment Agent");
+        assertEquals(response.getError().getMessage(), "You are not authorized for transfers via payment agents.");
     }
 }

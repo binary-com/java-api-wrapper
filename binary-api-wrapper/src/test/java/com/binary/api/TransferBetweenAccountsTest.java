@@ -49,6 +49,6 @@ public class TransferBetweenAccountsTest extends TestBase {
 
         assertEquals(response.getType(), "transfer_between_accounts");
         assertEquals(response.getError().getCode(), "TransferBetweenAccountsError");
-        assertEquals(response.getError().getMessage(), "The account transfer is unavailable for your account.");
+        assertEquals(response.getError().getMessage(), "Account transfers are not available within same account.");
     }
 }

@@ -27,7 +27,7 @@ public class EmailVerficationTest {
 
     @Test
     public void sendEmailVerificationTest() throws Exception {
-        EmailVerificationRequest request = new EmailVerificationRequest("test@local",
+        EmailVerificationRequest request = new EmailVerificationRequest("test@local.com",
                 EmailVerificationReasons.ACCOUNT_OPENING);
         TestObserver<ResponseBase> testObserver = new TestObserver<>();
 
