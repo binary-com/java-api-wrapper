@@ -2,6 +2,7 @@ package com.binary.api.utils;
 
 import com.binary.api.models.requests.ForgetAllResponse;
 import com.binary.api.models.requests.SellContractForMultipleAccountsRequest;
+import com.binary.api.models.requests.TransferBetweenAccountsRequest;
 import com.binary.api.models.responses.*;
 
 import java.lang.reflect.Type;
@@ -131,6 +132,22 @@ public class ClassUtils {
                 return TNCApprovalResponse.class;
             case "set_account_currency":
                 return SetAccountCurrencyResponse.class;
+            case "set_financial_assessment":
+                return SetFinancialAssessmentResponse.class;
+            case "set_self_exclusion":
+                return SetSelfExclusionSettingsResponse.class;
+            case "set_settings":
+                return SetAccountSettingsResponse.class;
+            case "cashier":
+                return CashierURLResponse.class;
+            case "cashier_password":
+                return CashierPasswordResponse.class;
+            case "paymentagent_withdraw":
+                return PaymentAgentWithdrawalResponse.class;
+            case "paymentagent_transfer":
+                return PaymentAgentTransferResponse.class;
+            case "transfer_between_accounts":
+                return TransferBetweenAccountsResponse.class;
         }
         return null;
     }

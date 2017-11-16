@@ -10,5 +10,6 @@ cache:
     - $HOME/.gradle/wrapper/
 before_script:
     - ./scripts/before-script.sh
+script: travis_wait ./gradlew check
 after_success:
     - ./gradlew jacocoTestReport coveralls
