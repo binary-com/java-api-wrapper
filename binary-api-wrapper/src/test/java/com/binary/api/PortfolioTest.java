@@ -18,7 +18,7 @@ import static org.junit.Assert.assertNotEquals;
  * @version 1.0.0
  * @since 8/7/2017
  */
-public class ProtfolioTest extends TestBase {
+public class PortfolioTest extends TestBase {
 
     @Test
     public void getPortfolioTest() throws Exception {

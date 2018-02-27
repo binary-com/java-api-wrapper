@@ -9,7 +9,7 @@ public enum StreamTypes {
     ticks,
     candles,
     proposal,
-    protfolio,
+    portfolio,
     proposal_open_contract,
     balance,
     transaction,

@@ -8,7 +8,7 @@ package com.binary.api.models.enums;
 public enum  AccountOpeningReasons {
     SPECULATIVE("Speculative"),
     INCOME_EARNING("Income Earning"),
-    HEDGING("Earning Hedging");
+    HEDGING("Hedging");
 
     private final String _value;
 
